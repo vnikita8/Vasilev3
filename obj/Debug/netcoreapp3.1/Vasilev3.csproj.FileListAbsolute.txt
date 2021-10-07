@@ -1,0 +1,15 @@
+C:\Users\EHOT\source\repos\Vasilev3\bin\Debug\netcoreapp3.1\Vasilev3.exe
+C:\Users\EHOT\source\repos\Vasilev3\bin\Debug\netcoreapp3.1\Vasilev3.deps.json
+C:\Users\EHOT\source\repos\Vasilev3\bin\Debug\netcoreapp3.1\Vasilev3.runtimeconfig.json
+C:\Users\EHOT\source\repos\Vasilev3\bin\Debug\netcoreapp3.1\Vasilev3.runtimeconfig.dev.json
+C:\Users\EHOT\source\repos\Vasilev3\bin\Debug\netcoreapp3.1\Vasilev3.dll
+C:\Users\EHOT\source\repos\Vasilev3\bin\Debug\netcoreapp3.1\Vasilev3.pdb
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.csprojAssemblyReference.cache
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.Form1.resources
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.csproj.GenerateResource.cache
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.AssemblyInfoInputs.cache
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.AssemblyInfo.cs
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.csproj.CoreCompileInputs.cache
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.dll
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.pdb
+C:\Users\EHOT\source\repos\Vasilev3\obj\Debug\netcoreapp3.1\Vasilev3.genruntimeconfig.cache
