@@ -23,6 +23,16 @@ namespace Vasilev3
             textBox1.MaxLength = 2;
             textBox2.MaxLength = 2;
             textBox3.MaxLength = 2;
+            try
+            {
+                button2.BackgroundImage = Image.FromFile("icon.png");
+
+                
+            }
+            catch
+            {
+                MessageBox.Show("Картинка");
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -43,104 +53,112 @@ namespace Vasilev3
                 Test.Hours = Convert.ToInt32(textBox1.Text);
                 Test.Minutes = Convert.ToInt32(textBox2.Text);
                 Test.Seconds = Convert.ToInt32(textBox3.Text);
-                if (radioButton1.Checked)
+                if (Test.Hours<0 || Test.Minutes<0 || Test.Seconds<0)
                 {
-                    int plusSeconds;
-                    bool numCheck = int.TryParse(textBox4.Text, out plusSeconds);
-                    if (numCheck)
+                    MessageBox.Show("Неверные значения времени", "Ошибка");
+                }
+                else
+                {
+                    if (radioButton1.Checked)
                     {
-                        Test = Test + plusSeconds;
+                        int plusSeconds;
+                        bool numCheck = int.TryParse(textBox4.Text, out plusSeconds);
+                        if (numCheck)
+                        {
+                            Test = Test + plusSeconds;
+                        }
+                        else
+                        {
+                            string[] times = textBox4.Text.Split(":");
+                            MyTime Test2 = new MyTime();
+                            Test2.Hours = Convert.ToInt32(times[0]);
+                            Test2.Minutes = Convert.ToInt32(times[1]);
+                            Test2.Seconds = Convert.ToInt32(times[2]);
+                            Test = Test + Test2;
+                        }
+
+                        string resHours = Test.Hours.ToString();
+                        string resMinutes = Test.Minutes.ToString();
+                        string resSeconds = Test.Seconds.ToString();
+
+                        if (resSeconds.Length == 1)
+                        {
+                            resSeconds = "0" + resSeconds;
+                        }
+                        if (resMinutes.Length == 1)
+                        {
+                            resMinutes = "0" + resMinutes;
+                        }
+                        if (resHours.Length == 1)
+                        {
+                            resHours = "0" + resHours;
+                        }
+
+                        maskedTextBox3.Text = $"{resHours}:{resMinutes}:{resSeconds}";
                     }
-                    else
+                    if (radioButton2.Checked)
+                    {
+                        int plusSeconds;
+                        bool numCheck = int.TryParse(textBox4.Text, out plusSeconds);
+                        if (numCheck)
+                        {
+                            Test = Test - plusSeconds;
+                        }
+                        else
+                        {
+                            string[] times = textBox4.Text.Split(":");
+                            MyTime Test2 = new MyTime();
+                            Test2.Hours = Convert.ToInt32(times[0]);
+                            Test2.Minutes = Convert.ToInt32(times[1]);
+                            Test2.Seconds = Convert.ToInt32(times[2]);
+                            Test = Test - Test2;
+                        }
+
+                        string resHours = Test.Hours.ToString();
+                        string resMinutes = Test.Minutes.ToString();
+                        string resSeconds = Test.Seconds.ToString();
+
+                        if (resSeconds.Length == 1)
+                        {
+                            resSeconds = "0" + resSeconds;
+                        }
+                        if (resMinutes.Length == 1)
+                        {
+                            resMinutes = "0" + resMinutes;
+                        }
+                        if (resHours.Length == 1)
+                        {
+                            resHours = "0" + resHours;
+                        }
+
+                        maskedTextBox3.Text = $"{resHours}:{resMinutes}:{resSeconds}";
+                    }
+                    if (radioButton3.Checked)
                     {
                         string[] times = textBox4.Text.Split(":");
                         MyTime Test2 = new MyTime();
                         Test2.Hours = Convert.ToInt32(times[0]);
                         Test2.Minutes = Convert.ToInt32(times[1]);
                         Test2.Seconds = Convert.ToInt32(times[2]);
-                        Test = Test + Test2;
+                        bool check = false;
+                        if (Test == Test2)
+                            check = true;
+                        maskedTextBox3.Text = check.ToString();
                     }
-
-                    string resHours = Test.Hours.ToString();
-                    string resMinutes = Test.Minutes.ToString();
-                    string resSeconds = Test.Seconds.ToString();
-
-                    if (resSeconds.Length == 1)
-                    {
-                        resSeconds = "0" + resSeconds;
-                    }
-                    if (resMinutes.Length == 1)
-                    {
-                        resMinutes = "0" + resMinutes;
-                    }
-                    if (resHours.Length == 1)
-                    {
-                        resHours = "0" + resHours;
-                    }
-
-                    maskedTextBox3.Text = $"{resHours}:{resMinutes}:{resSeconds}";
-                }
-                if (radioButton2.Checked)
-                {
-                    int plusSeconds;
-                    bool numCheck = int.TryParse(textBox4.Text, out plusSeconds);
-                    if (numCheck)
-                    {
-                        Test = Test - plusSeconds;
-                    }
-                    else
+                    if (radioButton4.Checked)
                     {
                         string[] times = textBox4.Text.Split(":");
                         MyTime Test2 = new MyTime();
                         Test2.Hours = Convert.ToInt32(times[0]);
                         Test2.Minutes = Convert.ToInt32(times[1]);
                         Test2.Seconds = Convert.ToInt32(times[2]);
-                        Test = Test - Test2;
+                        bool check = false;
+                        if (Test != Test2)
+                            check = true;
+                        maskedTextBox3.Text = check.ToString();
                     }
-
-                    string resHours = Test.Hours.ToString();
-                    string resMinutes = Test.Minutes.ToString();
-                    string resSeconds = Test.Seconds.ToString();
-
-                    if (resSeconds.Length == 1)
-                    {
-                        resSeconds = "0" + resSeconds;
-                    }
-                    if (resMinutes.Length == 1)
-                    {
-                        resMinutes = "0" + resMinutes;
-                    }
-                    if (resHours.Length == 1)
-                    {
-                        resHours = "0" + resHours;
-                    }
-
-                    maskedTextBox3.Text = $"{resHours}:{resMinutes}:{resSeconds}";
                 }
-                if (radioButton3.Checked)
-                {
-                    string[] times = textBox4.Text.Split(":");
-                    MyTime Test2 = new MyTime();
-                    Test2.Hours = Convert.ToInt32(times[0]);
-                    Test2.Minutes = Convert.ToInt32(times[1]);
-                    Test2.Seconds = Convert.ToInt32(times[2]);
-                    bool check = false;
-                    if (Test == Test2)
-                        check = true;
-                    maskedTextBox3.Text = check.ToString();
-                }
-                if (radioButton4.Checked)
-                {
-                    string[] times = textBox4.Text.Split(":");
-                    MyTime Test2 = new MyTime();
-                    Test2.Hours = Convert.ToInt32(times[0]);
-                    Test2.Minutes = Convert.ToInt32(times[1]);
-                    Test2.Seconds = Convert.ToInt32(times[2]);
-                    bool check = false;
-                    if (Test != Test2)
-                        check = true;
-                    maskedTextBox3.Text = check.ToString();
-                }
+                
 
             }
             catch
@@ -155,6 +173,17 @@ namespace Vasilev3
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Введите время в формате:\n\n  1) Секунды (Пример: 60)\n\n  2) Время (Пример: 12:30:00)", "Информация");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Разработать класс, инкапсулирующий время (часы, минуты, секунды). Перегрузить операторы + (количество секунд), +(объект время), -(количество дней), -(объект время), " +
+                "== (объект время), != (объект время). Реализовать методы вывода времени в разных форматах.");
+        }
     }
 
     public class MyTime
@@ -167,39 +196,10 @@ namespace Vasilev3
 
         public static MyTime operator +(MyTime time, int Second)
         {
-            while (Second > 59)
-            {
-                time.Minutes += 1;
-                Second -= 60;
-                if (time.Minutes > 59)
-                {
-                    time.Hours += 1;
-                    time.Minutes -= 60;
-                    if (time.Hours > 23)
-                    {
-                        time.Hours = 0;
-                    }
-                }
-            }
-            if (time.Seconds + Second >=60)
-            {
-                time.Minutes += 1;
-                time.Seconds += Second;
-                time.Seconds -= 60;
-                if (time.Minutes > 59)
-                {
-                    time.Hours += 1;
-                    time.Minutes -= 60;
-                    if (time.Hours > 23)
-                    {
-                        time.Hours = 0;
-                    }
-                }
-            }
-            else
-            {
-                time.Seconds += Second;
-            }
+            time.Seconds += Second;
+
+            time.WhatHappened();
+
             return time;
         }
         public static MyTime operator +(MyTime time, MyTime time2)
@@ -207,41 +207,15 @@ namespace Vasilev3
             time.Seconds += time2.Seconds;
             time.Minutes += time2.Minutes;
             time.Hours += time2.Hours;
-            while (time.Seconds > 59)
-            {
-                time.Minutes += 1;
-                time.Seconds -= 60;
-            }
-            while (time.Minutes > 59)
-            {
-                time.Hours += 1;
-                time.Minutes -= 60;
-                
-            }
-            while (time.Hours > 23)
-            {
-                time.Hours -= 24;
-            }
-            
+
+            time.WhatHappened();
+
             return time;
         }
         public static MyTime operator -(MyTime time, int Second)
         {
             time.Seconds -= Second;
-            while (time.Seconds < 0)
-            {
-                time.Minutes -= 1;
-                time.Seconds += 60;
-            }
-            while (time.Minutes < 0)
-            {
-                time.Hours -= 1;
-                time.Minutes += 60;
-            }
-            while (time.Hours < 0)
-            {
-                time.Hours += 24;
-            }
+            time.WhatHappened();
             return time;
         }
         public static MyTime operator -(MyTime time, MyTime time2)
@@ -249,20 +223,8 @@ namespace Vasilev3
             time.Seconds -= time2.Seconds;
             time.Minutes -= time2.Minutes;
             time.Hours -= time2.Hours;
-            while (time.Seconds < 0)
-            {
-                time.Minutes -= 1;
-                time.Seconds += 60;
-            }
-            while (time.Minutes < 0)
-            {
-                time.Hours -= 1;
-                time.Minutes += 60;
-            }
-            while (time.Hours < 0)
-            {
-                time.Hours += 24;
-            }
+
+            time.WhatHappened();
 
             return time;
         }
@@ -279,6 +241,40 @@ namespace Vasilev3
                 return true;
             else
                 return false;
+        }
+
+        public void WhatHappened()
+        {
+            while (this.Seconds < 0)
+            {
+                this.Minutes -= 1;
+                this.Seconds += 60;
+            }
+            while (this.Minutes < 0)
+            {
+                this.Hours -= 1;
+                this.Minutes += 60;
+            }
+            while (this.Hours < 0)
+            {
+                this.Hours += 24;
+            }
+            while (this.Seconds > 59)
+            {
+                this.Minutes += 1;
+                this.Seconds -= 60;
+            }
+            while (this.Minutes > 59)
+            {
+                this.Hours += 1;
+                this.Minutes -= 60;
+
+            }
+            while (this.Hours > 23)
+            {
+                this.Hours -= 24;
+            }
+            
         }
     }
 }
